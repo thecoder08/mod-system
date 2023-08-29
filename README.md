@@ -26,3 +26,5 @@ The mod was ran!
 The script fails to execute `test.so` because `initMod` is misspelt as `initmod`. It then skips this mod.
 
 You are free to use this code in your own projects.
+
+Make sure that you run the `modloader` program from the parent directory, not the `mods` directory.
