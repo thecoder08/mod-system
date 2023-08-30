@@ -4,7 +4,8 @@ This is a demonstrative mod system written in C. You can compile it as follows:
 gcc modloader.c -o modloader
 cd mods
 gcc -shared mod.c -o mod.so
-gcc -shared test.c -o test.so
+gcc -shared error.c -o error.so
+gcc -shared runnable.c /usr/lib/x86_64-linux-gnu/Scrt1.o -o runnable.so
 cd ..
 ```
 You can then run it as follows:
@@ -18,12 +19,14 @@ The script will error out if the mod is not an ELF shared library, or if the `in
 The expected output is as follows:
 ```
 Searching for mods...
-Found mod: test.so
-Error running mod: mods/test.so: undefined symbol: initMod
+Found mod: runnable.so
+The mod was ran from the loader in this case.
+Found mod: error.so
+Error running mod: mods/error.so: undefined symbol: initMod
 Found mod: mod.so
 The mod was ran!
 ```
-The script fails to execute `test.so` because `initMod` is misspelt as `initmod`. It then skips this mod.
+The script fails to execute `error.so` because `initMod` is misspelt as `initmod`. It then skips this mod. The `runnable.so` mod is special because it is possible to run it directly by typing `mods/runnable.so`.
 
 You are free to use this code in your own projects.
 
